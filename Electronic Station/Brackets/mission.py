@@ -6,6 +6,10 @@ def checkio(expression):
         print(brakets)
         print(f'in while {len(brakets)==0}')
     print(f'out while {len(brakets)==0}')
+    print(f'---id(1)={id(1)},id(10)={id(10)},id(9)={id(9)},id(8)={id(8)},id(7)={id(7)},'
+          f'id(10)-id(9)={id(10)-id(9)},id(8)-id(7)={id(8)-id(7)}')
+    print(1,2)
+    print((1,2))
     return len(brakets)==0
 
 
