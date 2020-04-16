@@ -11,7 +11,6 @@ and checks if password is strong enough
 """
 
 
-
 def is_acceptable_password(password: str) -> bool:
     # your code here
     if len(password) > 6 and any(i.isdigit() for i in password):
@@ -118,14 +117,25 @@ if __name__ == '__main__':
 
 def is_acceptable_password(password):
     # your code here
-    if 'password' not in password.lower() and \
-            (len(set(password)) >= 3) and \
-            (len(password) > 9 or len(password) > 6
-             and any(i.isdigit() for i in password)
-             and not password.isdigit()):
-        return True
-    else:
-        return False
+
+    password_is_not_paSsWord = 'password' not in password.lower()
+    unique_letters = len(set(password)) >= 3
+    length_9 = len(password) > 9
+    has_some_digit = any(i.isdigit() for i in password) and \
+                     not password.isdigit()
+    length_6 = len(password) > 6
+
+    return password_is_not_paSsWord and \
+           (has_some_digit or length_9) and \
+           length_6 and unique_letters
+    # if 'password' not in password.lower() and \
+    #         (len(set(password)) >= 3) and \
+    #         (len(password) > 9 or len(password) > 6
+    #          and any(i.isdigit() for i in password)
+    #          and not password.isdigit()):
+    #     return True
+    # else:
+    #     return False
 
 
 if __name__ == '__main__':
