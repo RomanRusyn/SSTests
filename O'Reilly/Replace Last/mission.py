@@ -3,6 +3,11 @@ from typing import Iterable
 
 def replace_last(items: list) -> Iterable:
     # your code here
+    def create_multipliers():
+        return [lambda x: i * x for i in range(5)]
+
+    for multiplier in create_multipliers():
+        print(multiplier(2))
     print(items[-1:])
     print(items[:-1])
     return items[-1:]+items[:-1]
