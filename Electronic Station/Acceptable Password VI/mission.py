@@ -1,10 +1,15 @@
-# Taken from mission Acceptable Password V
+"""Tasks are taken from:
 
-# Taken from mission Acceptable Password IV
+mission Acceptable Password V
+mission Acceptable Password IV
 
-# Taken from mission Acceptable Password III
+mission Acceptable Password III
+mission Acceptable Password II
 
-# Taken from mission Acceptable Password II
+Function is taking a string parameter and output boolean
+and checks if password is strong enough
+"""
+
 
 
 def is_acceptable_password(password: str) -> bool:
