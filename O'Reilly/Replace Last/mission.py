@@ -10,7 +10,7 @@ def replace_last(items: list) -> Iterable:
         print(multiplier(2))
     print(items[-1:])
     print(items[:-1])
-    return items[-1:]+items[:-1]
+    return items[-1:] + items[:-1]
 
 
 if __name__ == '__main__':
