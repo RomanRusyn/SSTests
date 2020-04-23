@@ -57,49 +57,63 @@ def main():
         print('The path specified does not exist')
         sys.exit()
 
+    # parser(input_path, size_dictionary)
+
+    write_to_file(parser(input_path, size_dictionary), output_path)
+
+    printing_pretty(output_path)
+
     print(
-        f"input path-{input_path}, output path-{output_path}, count={size_dictionary}")
+        f"input path-{input_path}, output path-{output_path}, "
+        f"count={size_dictionary}")
 
-    def parser(path, dict_size):
-        """File parser
 
-        This function takes path to file for parsing, size of dictionary output
-        size.
+def parser(path_in, dict_size):
+    """File parser
 
-        Reads file line by line, choosing url address and replaces it into the
-        output file in JSON format:
-        [
-            {"url": [
-                {"raw_url": "google.com"},
-                {"raw_url": "microsoft.com"},
-                {"raw_url": “yahoo.co.ip"},
-                ....
-                ]}
-        ]
+    This function takes path to file for parsing, size of dictionary output
+    size.
 
-        """
-        general_list = []
-        formation_dictionary_25items = {}
-        list_with_25elements = []
+    Reads file line by line, choosing url address and replaces it into the
+    output file in JSON format:
+    [
+        {"url": [
+            {"raw_url": "google.com"},
+            {"raw_url": "microsoft.com"},
+            {"raw_url": “yahoo.co.ip"},
+            ....
+            ]}
+    ]
 
-        with open(path, 'r') as file:
-            for line in file.readlines():
-                dict_with_1item = {}
-                sp_line = line.split('\t')
-                dict_with_1item["raw_url"] = sp_line[0]
-                if len(list_with_25elements) < dict_size:
-                    list_with_25elements.append(dict_with_1item)
-                else:
-                    formation_dictionary_25items["url"] = list_with_25elements
-                    list_with_25elements = []
-                    general_list.append(formation_dictionary_25items)
-                    formation_dictionary_25items = {}
+    """
+    general_list = []
+    dictionary_items = {}
+    list_with_elements = []
 
-        with open(output_path, 'w') as file:
-            file.writelines(str(general_list).replace("'", "\""))
+    with open(path_in, 'r') as file:
+        for line in file.readlines():
+            dict_with_1item = {}
+            sp_line = line.split('\t')
+            dict_with_1item["raw_url"] = sp_line[0]
+            if len(list_with_elements) < dict_size:
+                list_with_elements.append(dict_with_1item)
+            else:
+                dictionary_items["url"] = list_with_elements
+                list_with_elements = []
+                general_list.append(dictionary_items)
+                dictionary_items = {}
 
-    parser(input_path, size_dictionary)
+    return general_list
 
+
+def write_to_file(general_list, path_out):
+    """ Writing parsed list from parser into file"""
+    with open(path_out, 'w',encoding="utf-8") as file:
+        file.writelines(str(general_list).replace("'", "\""))
+
+
+def printing_pretty(output_path):
+    """Printing file to CLI in pretty way"""
     with open(output_path, 'r') as handle:
         parsed = json.load(handle)
         print(json.dumps(parsed, indent=3, sort_keys=True))
