@@ -1,2 +1,28 @@
-[{"url": [{"raw_url": "google.com"}, {"raw_url": "youtube.com"}, {"raw_url": "facebook.com"}]},
-{"raw_url": "uspersonality.com"}]}]
+[
+   {
+      "url": [
+         {
+            "raw_url": "google.com"
+         },
+         {
+            "raw_url": "youtube.com"
+         },
+         {
+            "raw_url": "facebook.com"
+         }
+      ]
+   },
+   {
+      "url": [
+         {
+            "raw_url": "baidu.com"
+         },
+         {
+            "raw_url": "qq.com"
+         },
+         {
+            "raw_url": "sohu.com"
+         }
+      ]
+   }
+]

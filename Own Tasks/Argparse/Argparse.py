@@ -53,11 +53,9 @@ def main():
     output_path = args.output
     size_dictionary = args.batchsize
 
-    if not os.path.isfile(input_path) or not os.path.isfile(output_path):
+    if not os.path.isfile(input_path):
         print('The path specified does not exist')
         sys.exit()
-
-    # parser(input_path, size_dictionary)
 
     write_to_file(parser(input_path, size_dictionary), output_path)
 
@@ -108,7 +106,7 @@ def parser(path_in, dict_size):
 
 def write_to_file(general_list, path_out):
     """ Writing parsed list from parser into file"""
-    with open(path_out, 'w',encoding="utf-8") as file:
+    with open(path_out, 'w+', encoding="utf-8") as file:
         file.writelines(str(general_list).replace("'", "\""))
 
 
