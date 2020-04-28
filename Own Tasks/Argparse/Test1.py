@@ -2,7 +2,7 @@ import filecmp
 import os
 import unittest
 
-from Argparse import parser
+from Argparse import parser, write_to_file
 
 
 class MyTestCase(unittest.TestCase):
@@ -36,6 +36,20 @@ class MyTestCase(unittest.TestCase):
 
     def test_path_exists(self):
         self.assertTrue(os.path.exists("Tests/out.txt"))
+
+    def test_write_file(self):
+        test_string = [{"url": [{"raw_url": "360.cn"}]}]
+        write_to_file(test_string, 'Tests/write_test.txt')
+        self.assertTrue(filecmp.cmp("Tests/write_test.txt",
+                                    "Tests/handle_write_test.txt"))
+
+    def test_write_no_list(self):
+        with self.assertRaises(FileNotFoundError):
+            write_to_file('', '')
+
+    def test_write_no_path(self):
+        with self.assertRaises(TypeError):
+            write_to_file('')
 
 
 if __name__ == '__main__':
