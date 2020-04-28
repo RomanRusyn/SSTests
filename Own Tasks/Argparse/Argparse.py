@@ -17,12 +17,20 @@ The Example of usage:
 
 import argparse
 import json
+import logging
 import os
 import sys
 
 
 def main():
     """Main function for launching argparser and file parser in a bunch"""
+    logging.basicConfig(filename='arparse.log', filemode='w',
+                        format='%(levelname)s %(asctime)s: %(message)s',
+                        datefmt='%m/%d/%Y %H:%M:%S ',
+                        level=logging.DEBUG)
+
+    logging.info('Logging began')
+
     my_parser = argparse.ArgumentParser(description='File parser. From path1 '
                                                     'converts to path2')
 
@@ -54,6 +62,7 @@ def main():
     size_dictionary = args.batchsize
 
     if not os.path.isfile(input_path):
+        logging.error('The path specified does not exist')
         print('The path specified does not exist')
         sys.exit()
 
@@ -61,10 +70,15 @@ def main():
 
     printing_pretty(output_path)
 
+    logging.info(f"input path is '{input_path}', "
+                 f"output path is '{output_path}', "
+                 f"size of dictionary is {size_dictionary}")
+
     print(
         f"input path-{input_path}, output path-{output_path}, "
         f"count={size_dictionary}")
 
+    logging.info('Logging finished')
 
 def parser(path_in, dict_size):
     """File parser
@@ -98,9 +112,12 @@ def parser(path_in, dict_size):
             else:
                 dictionary_items["url"] = list_with_elements
                 list_with_elements = []
+                list_with_elements.append(dict_with_1item)
                 general_list.append(dictionary_items)
                 dictionary_items = {}
-
+        if len(list_with_elements) > 0:
+            dictionary_items["url"] = list_with_elements
+            general_list.append(dictionary_items)
     return general_list
 
 
@@ -114,6 +131,8 @@ def printing_pretty(output_path):
     """Printing file to CLI in pretty way"""
     with open(output_path, 'r') as handle:
         parsed = json.load(handle)
+        logging.info(f"Info from printing_pretty method: \n"
+                     f" {json.dumps(parsed, indent=3, sort_keys=True)}")
         print(json.dumps(parsed, indent=3, sort_keys=True))
 
 
