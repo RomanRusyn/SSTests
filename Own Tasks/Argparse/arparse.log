@@ -1,0 +1,52 @@
+INFO 04/28/2020 16:34:51 : Logging began
+INFO 04/28/2020 16:34:51 : Info from printing_pretty method: 
+ [
+   {
+      "url": [
+         {
+            "raw_url": "google.com"
+         },
+         {
+            "raw_url": "youtube.com"
+         },
+         {
+            "raw_url": "facebook.com"
+         }
+      ]
+   },
+   {
+      "url": [
+         {
+            "raw_url": "tmall.com"
+         },
+         {
+            "raw_url": "baidu.com"
+         },
+         {
+            "raw_url": "qq.com"
+         }
+      ]
+   },
+   {
+      "url": [
+         {
+            "raw_url": "sohu.com"
+         },
+         {
+            "raw_url": "login.tmall.com"
+         },
+         {
+            "raw_url": "taobao.com"
+         }
+      ]
+   },
+   {
+      "url": [
+         {
+            "raw_url": "360.cn"
+         }
+      ]
+   }
+]
+INFO 04/28/2020 16:34:51 : input path is 'ten.txt', output path is 'ten_out.txt', size of dictionary is 3
+INFO 04/28/2020 16:34:51 : Logging finished

@@ -1,0 +1,10 @@
+google.com	1
+youtube.com	2
+facebook.com	3
+tmall.com	4
+baidu.com	5
+qq.com	6
+sohu.com	7
+login.tmall.com	8
+taobao.com	9
+360.cn	10

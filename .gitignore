@@ -2,3 +2,5 @@
 /workspace.xml
 .idea/
 **/*.yaml
+"sendgrid.env" 
+/sendgrid.env
